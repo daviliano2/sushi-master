@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
   entry: './src/index.js',
   devServer: {
-    contentBase: './dist',
+    contentBase: './src',
     hot: true,
     port: 4444,
   },
