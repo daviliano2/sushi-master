@@ -12,10 +12,18 @@
       margin: 40px;
     }
 
-    .with-space-between {
+    .card-body {
       display: flex;
       justify-content: space-between;
       align-items: center;
+    }
+
+    .btn-outline-danger {
+      margin-left: 10px;
+    }
+
+    .align-right {
+      text-align: end;
     }
   </style>
 </head>
@@ -28,9 +36,9 @@
   </header>
   <div class="container">
     <div class="row" id="main-content">
-      <div class="col-6" id="left-column">
-        <div class="card">
-          <div class="card-body with-space-between">
+      <div class="col-6" id="products-column">
+        <!--<div class="card">
+          <div class="card-body">
             <div>
               <div class="product-name">
                 name
@@ -41,14 +49,17 @@
             </div>
             <button type="button" class="btn btn-primary">+</button>
           </div>
-        </div>
+        </div>-->
       </div>
       <div class="col-6">
-        <div class="card">
+        <div class="card" id="orders-column">
           <div class="card-header">
             ORDERS
+            <div>
+              TODO: PLACE THE NUMBER OF ORDERS HERE
+            </div>
           </div>
-          <div class="card-body with-space-between" id="order-summary">
+          <!--<div class="card-body" id="order-summary">
             <div>
               Name
             </div>
@@ -58,7 +69,7 @@
             <div>
               price
               <button type="button" class="btn btn-outline-danger btn-sm">X</button>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>

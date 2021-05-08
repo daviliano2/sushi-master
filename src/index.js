@@ -1,30 +1,32 @@
-import { createProductCard } from './layoutHelpers'
+import { createProductCard, createOrderCard } from './layoutHelpers'
 import data from './data.json'
 
-function addToOrder(row, price) {
+function addToOrder({ row, productName, price }) {
   const addButton = row.querySelector('button')
+  const ordersColumn = document.getElementById('orders-column')
 
-  // TODO: next step: create the right HTML order layout inside helpers and append it
   addButton.onclick = (event) => {
-    console.log(event.target)
-    console.log(event.target.value)
-    document.getElementById('order-summary').append(event.target.value)
-    document.getElementById('order-summary').append(price)
+    // console.log(event.target)
+    // console.log(event.target.value)
+
+    const order = createOrderCard({ productName, price })
+
+    ordersColumn.appendChild(order)
   }
 }
 
 function createLayout() {
   console.log(data)
-  console.log(Object.keys(data.sushi_box))
+  
   const sushiNames = Object.keys(data.sushi_box)
   const sushiBox = data.sushi_box
-  const leftColumn = document.getElementById('left-column')
+  const productsColumn = document.getElementById('products-column')
 
-  sushiNames.forEach((name) => {
-    const row = createProductCard(name, sushiBox[name].description)
-    addToOrder(row, sushiBox[name].price)
+  sushiNames.forEach((productName) => {
+    const row = createProductCard(productName, sushiBox[productName].description)
+    addToOrder({ row, productName, price: sushiBox[productName].price })
 
-    leftColumn.appendChild(row)
+    productsColumn.appendChild(row)
   })
 }
 
