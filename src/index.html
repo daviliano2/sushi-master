@@ -12,7 +12,7 @@
       margin: 40px;
     }
 
-    .card-body {
+    .card-body, .card-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -25,6 +25,10 @@
     .align-right {
       text-align: end;
     }
+
+    .lighter-text {
+      color: darkgrey;
+    }
   </style>
 </head>
 
@@ -34,47 +38,39 @@
       Place your sushi order
     </h3>
   </header>
-  <div class="container">
-    <div class="row" id="main-content">
-      <div class="col-6" id="products-column">
-        <!--<div class="card">
-          <div class="card-body">
-            <div>
-              <div class="product-name">
-                name
+  <form id="orders-form">
+    <div class="container">
+      <div class="row" id="main-content">
+        <div class="col-6" id="products-column">
+        </div>
+        <div class="col-6">
+          <div class="card" id="orders-column">
+            <div class="card-header">
+              ORDERS
+              <div id="total-orders">
               </div>
-              <div class="product-description">
-                description
-              </div>
-            </div>
-            <button type="button" class="btn btn-primary">+</button>
-          </div>
-        </div>-->
-      </div>
-      <div class="col-6">
-        <div class="card" id="orders-column">
-          <div class="card-header">
-            ORDERS
-            <div>
-              TODO: PLACE THE NUMBER OF ORDERS HERE
             </div>
           </div>
-          <!--<div class="card-body" id="order-summary">
-            <div>
-              Name
+          <div class="card">
+            <div class="card-body">
+              <div>
+                <p>To be paid</p>
+                <p class="lighter-text">with 7% VAT</p>
+              </div>
+              <div>
+                <p><span id="total-value">0</span> €</p>
+                <p class="lighter-text">
+                  <span id="total-value-vat">0</span> €
+                </p>
+                <input type="hidden" id="total-value-input" value="0" />
+              </div>
             </div>
-            <div>
-              size
-            </div>
-            <div>
-              price
-              <button type="button" class="btn btn-outline-danger btn-sm">X</button>
-            </div> -->
           </div>
         </div>
       </div>
     </div>
-  </div>
+    </div>
+  </form>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous">
   </script>
