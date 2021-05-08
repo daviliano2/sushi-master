@@ -1,33 +1,30 @@
-import { createProductCard, createOrderCard } from './layoutHelpers'
+import { createProductCard } from './layoutHelpers'
+import { addCreateTobutton, updatePrice } from './formHelpers'
 import data from './data.json'
 
-function addToOrder({ row, productName, price }) {
-  const addButton = row.querySelector('button')
-  const ordersColumn = document.getElementById('orders-column')
-
-  addButton.onclick = (event) => {
-    // console.log(event.target)
-    // console.log(event.target.value)
-
-    const order = createOrderCard({ productName, price })
-
-    ordersColumn.appendChild(order)
-  }
-}
-
 function createLayout() {
-  console.log(data)
-  
   const sushiNames = Object.keys(data.sushi_box)
   const sushiBox = data.sushi_box
   const productsColumn = document.getElementById('products-column')
 
   sushiNames.forEach((productName) => {
     const row = createProductCard(productName, sushiBox[productName].description)
-    addToOrder({ row, productName, price: sushiBox[productName].price })
+    addCreateTobutton({ row, productName, price: sushiBox[productName].price })
 
     productsColumn.appendChild(row)
   })
+
+  const ordersForm = document.getElementById('orders-form')
+  ordersForm.onchange = (event) => {
+    const element = event.target
+    const parent = element.parentNode
+    const priceElement = parent.querySelector('[data-size]')
+    const hiddenPriceInput = parent.querySelector('input')
+
+    if (element.localName === 'select') {
+      updatePrice({ priceElement, multiplier: element.value, hiddenPriceInput, parent })
+    }
+  }
 }
 
 createLayout()
